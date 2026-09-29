@@ -8,8 +8,7 @@
 <meta name="description" content="Afyatel connects you with licensed doctors, pharmacies and laboratories in Kenya. Book, chat and pay with M-Pesa.">
 <link rel="icon" href="favicon.png">
 <style>
-:root{--bg:#FFF8FB;--ink:#241B24;--muted:#6B6470;--accent:#B0305F;--soft:#F8C7D8;--line:#EBDDE4;--card:#fff}
-@media (prefers-color-scheme:dark){:root{--bg:#1A141A;--ink:#F4ECF1;--muted:#B5AAB2;--accent:#F28DB2;--soft:#4A2A3A;--line:#3A2E37;--card:#241B24}}
+:root{color-scheme:light;--bg:#FFF8FB;--ink:#241B24;--muted:#6B6470;--accent:#B0305F;--soft:#F8C7D8;--line:#EBDDE4;--card:#fff}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 .wrap{max-width:880px;margin:0 auto;padding:0 16px}
@@ -21,7 +20,7 @@ h1{font-size:44px;letter-spacing:.08em;margin:12px 0 0;color:var(--accent)}
 .lead{font-size:19px;max-width:560px;margin:0 auto 28px}
 .btn{display:inline-block;padding:14px 26px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
 .soon{display:block;margin-top:10px;font-size:13px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;padding:40px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:14px;padding:40px 0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
 .card h3{margin:0 0 6px;font-size:17px}.card p{margin:0;color:var(--muted);font-size:15px}
 .notice{border-left:4px solid var(--accent);background:var(--card);padding:14px 18px;border-radius:8px;font-size:15px}
