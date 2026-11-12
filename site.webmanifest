@@ -1,0 +1,13 @@
+{
+  "name": "Afyatel",
+  "short_name": "Afyatel",
+  "description": "Licensed doctors, pharmacies and laboratories in Kenya, in one app.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FFF8FB",
+  "theme_color": "#241B24",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
