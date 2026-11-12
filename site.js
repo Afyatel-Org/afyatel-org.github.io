@@ -145,7 +145,7 @@
         var left = on.offsetLeft - strip.offsetLeft - (strip.clientWidth - on.offsetWidth) / 2;
         if (strip.scrollTo) strip.scrollTo({ left: left, behavior: reduce ? 'auto' : 'smooth' }); else strip.scrollLeft = left;
       }
-      if (!keepHash && root.id === 'demo' && history.replaceState) history.replaceState(null, '', '#' + id);
+      if (!keepHash && root.id === 'walkthrough' && history.replaceState) history.replaceState(null, '', '#' + id);
       paint(true);
     };
     var go = function (d) {

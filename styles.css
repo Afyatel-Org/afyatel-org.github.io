@@ -594,7 +594,7 @@ mark { background: #FFF3CF; color: var(--amber); padding: 1px 6px; border-radius
 .d-hint { display: flex; gap: 10px; align-items: center; margin-top: 22px; font-size: 13.5px; color: rgba(255,255,255,.45); }
 .d-hint svg { width: 18px; height: 18px; flex: none; }
 .d-fine { margin-top: 48px; text-align: center; font-size: 13px; color: rgba(255,255,255,.4); }
-.demo-sec { padding-top: 84px; }
+.walk-sec { padding-top: 84px; }
 
 /* chips, pager, prose */
 .chipset { margin-top: 56px; padding: 32px; border-radius: var(--r-lg); background: #fff; border: 1px solid var(--line); }
