@@ -76,10 +76,15 @@
   var fit = function () {
     $$('[data-fit]').forEach(function (dev) {
       var w = dev.parentNode.clientWidth || window.innerWidth;
-      var small = window.innerWidth <= 760;
-      var roomH = window.innerHeight - (small ? 150 : 200);
-      var k = Math.min(small ? 1 : 1.060, w / 322, roomH / 662);
-      dev.style.setProperty('--k', Math.max(.620, k).toFixed(3));
+      var k;
+      if (window.innerWidth <= 760) {
+        // Phones: size by width only. Sizing by height makes the text unreadably small,
+        // and iOS changes the viewport height as its toolbars slide in and out.
+        k = Math.min(.880, w / 322);
+      } else {
+        k = Math.max(.620, Math.min(1.060, w / 322, (window.innerHeight - 200) / 662));
+      }
+      dev.style.setProperty('--k', k.toFixed(3));
     });
   };
   fit(); window.addEventListener('resize', fit);
@@ -113,6 +118,19 @@
       clearTimeout(swapTimer);
       if (animateText && !reduce) { panel.classList.add('swap'); swapTimer = setTimeout(write, 200); } else write();
     };
+    // On phones the caption bar covers the bottom of the screen, so after each step
+    // nudge the page until the next thing to tap sits between the header and the bar.
+    var follow = function () {
+      if (window.innerWidth > 760) return;
+      setTimeout(function () {
+        var t = $('.screen.on [data-tap]', root) || $('.device', root);
+        var r = t.getBoundingClientRect();
+        var top = (nav ? nav.offsetHeight : 0) + 14, bottom = window.innerHeight - panel.offsetHeight - 18, dy = 0;
+        if (r.bottom > bottom) dy = r.bottom - bottom;
+        if (r.top - dy < top) dy = r.top - top;
+        if (Math.abs(dy) > 4) window.scrollBy({ top: dy, behavior: reduce ? 'auto' : 'smooth' });
+      }, 420);
+    };
     var open = function (id, keepHash) {
       if (!byId[id]) return;
       cur = id; step = 0;
@@ -120,7 +138,13 @@
       var aud = byId[id].audience;
       $$('[data-aud]', root).forEach(function (g) { g.hidden = g.getAttribute('data-aud') !== aud; });
       $$('[data-aud-btn]', root).forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-aud-btn') === aud); });
-      var on = $('.d-j.on', root); if (on && on.scrollIntoView && window.innerWidth <= 760) on.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduce ? 'auto' : 'smooth' });
+      // Centre the chosen journey chip in its own strip. Scroll the strip only, never
+      // the page: scrollIntoView here would pull the whole page down to the demo on load.
+      var on = $('.d-j.on', root), strip = on && on.parentNode;
+      if (strip && strip.scrollWidth > strip.clientWidth) {
+        var left = on.offsetLeft - strip.offsetLeft - (strip.clientWidth - on.offsetWidth) / 2;
+        if (strip.scrollTo) strip.scrollTo({ left: left, behavior: reduce ? 'auto' : 'smooth' }); else strip.scrollLeft = left;
+      }
       if (!keepHash && root.id === 'demo' && history.replaceState) history.replaceState(null, '', '#' + id);
       paint(true);
     };
@@ -129,14 +153,14 @@
       if (n < 0) return;
       if (n >= j.steps.length) {            // roll on to the next journey for this audience
         var same = data.filter(function (x) { return x.audience === j.audience; });
-        return open(same[(same.indexOf(j) + 1) % same.length].id);
+        open(same[(same.indexOf(j) + 1) % same.length].id); return follow();
       }
-      step = n; paint(true);
+      step = n; paint(true); follow();
     };
 
     el('next').addEventListener('click', function () { go(1); });
     el('back').addEventListener('click', function () { go(-1); });
-    $$('[data-journey]', root).forEach(function (b) { b.addEventListener('click', function () { open(b.getAttribute('data-journey')); }); });
+    $$('[data-journey]', root).forEach(function (b) { b.addEventListener('click', function () { open(b.getAttribute('data-journey')); follow(); }); });
     $$('[data-aud-btn]', root).forEach(function (b) {
       b.addEventListener('click', function () {
         var first = data.filter(function (x) { return x.audience === b.getAttribute('data-aud-btn'); })[0];
