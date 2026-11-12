@@ -7,7 +7,8 @@
 //   apkUrl set   → the pilot build is offered as a direct Android download.
 //   both empty   → the site offers the pilot build on request, through Contact.
 //
-// TODO(human): set apkUrl (and size / sha256) for the pilot build.
+// apkUrl is empty until the pilot .apk has a stable home; the site then offers the
+// build on request instead of showing a dead download link.
 window.AFYATEL_RELEASE = {
   playUrl: '',          // on roll-out: 'https://play.google.com/store/apps/details?id=com.afyatel.app'
   apkUrl: '',
