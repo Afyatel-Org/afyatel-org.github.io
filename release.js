@@ -11,10 +11,10 @@
 // published as a release download on the site's GitHub repository.
 window.AFYATEL_RELEASE = {
   playUrl: '',          // on roll-out: 'https://play.google.com/store/apps/details?id=com.afyatel.app'
-  apkUrl: 'https://github.com/Afyatel-Org/afyatel-org.github.io/releases/download/app-1.2.1-21/Afyatel-1.2.1.apk',
-  version: '1.2.1',
-  build: 21,
-  updated: '12 November 2026',
+  apkUrl: 'https://github.com/Afyatel-Org/afyatel-org.github.io/releases/download/app-1.3.0-23/Afyatel-1.3.0.apk',
+  version: '1.3.0',
+  build: 23,
+  updated: '20 November 2026',
   size: '106 MB',
-  sha256: 'ea3b5f46537b02fc27c05062f2b3a57c3e55bf23641d1df73b59ddc6a733bbac'
+  sha256: 'fee68408296676a4021fa423a3e7be23e9d1550eb5a0466cd283aa8110340fbc'
 };
