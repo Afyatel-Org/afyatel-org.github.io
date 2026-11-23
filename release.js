@@ -7,14 +7,14 @@
 //   apkUrl set   → the pilot build is offered as a direct Android download.
 //   both empty   → the site offers the pilot build on request, through Contact.
 //
-// The pilot .apk is 106 MB, over the 100 MB a repository file may be, so it is
+// The pilot .apk is 161 MB, over the 100 MB a repository file may be, so it is
 // published as a release download on the site's GitHub repository.
 window.AFYATEL_RELEASE = {
   playUrl: '',          // on roll-out: 'https://play.google.com/store/apps/details?id=com.afyatel.app'
-  apkUrl: 'https://github.com/Afyatel-Org/afyatel-org.github.io/releases/download/app-1.3.0-23/Afyatel-1.3.0.apk',
-  version: '1.3.0',
-  build: 23,
-  updated: '20 November 2026',
-  size: '106 MB',
-  sha256: 'fee68408296676a4021fa423a3e7be23e9d1550eb5a0466cd283aa8110340fbc'
+  apkUrl: 'https://github.com/Afyatel-Org/afyatel-org.github.io/releases/download/app-1.5.0-24/Afyatel-1.5.0.apk',
+  version: '1.5.0',
+  build: 24,
+  updated: '23 November 2026',
+  size: '161 MB',
+  sha256: '762574210308ca8f0783bc5ede50c9912d3b9fbbbeeb29e60c89395bddfb2382'
 };
